@@ -1,0 +1,47 @@
+def foo1 = tasks.register("foo1") {
+    group "customGroup"
+    doLast {
+        println "foo1"
+    }
+}
+
+def bar1 = tasks.register("bar1") {
+    group "customGroup"
+    doLast {
+        println "bar1"
+    }
+}
+
+def toy1 = tasks.register("toy1") {
+    group "customGroup"
+    doLast {
+        println "toy1"
+    }
+}
+
+bar1.configure { dependsOn foo1 }
+toy1.configure { dependsOn bar1 }
+
+def foo2 = tasks.register("foo2") {
+    group "customGroup"
+    doLast {
+        println "foo2"
+    }
+}
+
+def bar2 = tasks.register("bar2") {
+    group "customGroup"
+    doLast {
+        println "bar2"
+    }
+}
+
+def toy2 = tasks.register("toy2") {
+    group "customGroup"
+    doLast {
+        println "toy2"
+    }
+}
+
+bar2.configure { mustRunAfter foo2 }
+toy2.configure { mustRunAfter bar2 }
